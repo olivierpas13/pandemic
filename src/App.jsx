@@ -2,9 +2,17 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { Physics } from "@react-three/rapier";
-import { OrbitControls } from "@react-three/drei";
+import { CycleRaycast, OrbitControls } from "@react-three/drei";
 import City from "./models/City";
+import { HumanController } from "./controllers/HumanController";
+import NavMesh from "./models/NavMesh";
+import { useState } from "react";
+// import Human from "./models/Human";
 function App() {
+  const [position, setPosition] = useState([6, 9, -11]);
+  const changePos = (pos) => {
+    setPosition(pos);
+  };
   const adjustIslandForScreenSize = () => {
     let screenScale = null;
     const screenPosition = [0, -6.5, -43.4];
@@ -29,15 +37,18 @@ function App() {
         <Suspense>
           <OrbitControls />
 
-          {/* <Physics debug> */}
-          <directionalLight position={[1, 1, 1]} intensity={3} />
-          <ambientLight intensity={0.5} />
-          <City
-            position={islandPosition}
-            islandScale={islandScale}
-            islandRotation={islandRotation}
-          />
-          {/* </Physics> */}
+          <Physics>
+            <directionalLight position={[1, 1, 1]} intensity={3} />
+            <ambientLight intensity={0.5} />
+            <HumanController position={position} />
+            <NavMesh
+              setPosition={changePos}
+              humanPosition={position}
+              position={islandPosition}
+              scale={islandScale}
+            />
+            <City position={islandPosition} scale={islandScale} />
+          </Physics>
         </Suspense>
       </Canvas>
     </section>

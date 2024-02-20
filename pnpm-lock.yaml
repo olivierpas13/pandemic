@@ -23,6 +23,12 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  three:
+    specifier: ^0.161.0
+    version: 0.161.0
+  three-pathfinding:
+    specifier: ^1.2.0
+    version: 1.2.0(three@0.161.0)
 
 devDependencies:
   '@types/react':
@@ -3208,6 +3214,14 @@ packages:
     resolution: {integrity: sha512-63xvjnmK3FpA41klHfVvTMi2JRFdKeu3b4STBcLvGyDMYRpkBIyJ2d77CnNvKBZl9bed4sdEyrqE3AOsGorjUA==}
     peerDependencies:
       three: '>= 0.151.0'
+    dependencies:
+      three: 0.161.0
+    dev: false
+
+  /three-pathfinding@1.2.0(three@0.161.0):
+    resolution: {integrity: sha512-TlIfy+mLOdP7OhQG4Mn1dNONYbhu2Xe+AD7jL8SbdKdAHxH/TF68svpk2c8UrSfR/3YWQ87Tq/lp5HQO/QuaMw==}
+    peerDependencies:
+      three: 0.x.x
     dependencies:
       three: 0.161.0
     dev: false
